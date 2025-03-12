@@ -1,0 +1,288 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  background-color: rgb(0, 0, 17);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+section {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100vh;
+}
+
+.background {
+  width: 100vw;
+  
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  top: 0;
+  left: 0;
+
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  position: relative;
+  background-color: #f0f0f000; /* Transparent background (this allows background image/color to show through) */
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.w-full.h-full.relative {
+  padding: 0 !important;
+}
+
+.cursor {
+  position: fixed;
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%; 
+  border: 1px solid #3498db; 
+  pointer-events: none;
+  top: -20px; 
+  left: -20px; 
+  z-index: 2;
+  
+}
+
+header {
+  position: fixed; /* Makes the header stick to the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #33333300; /* Dark background */
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 1000;
+  padding: 10px 0; /* Adds some space around the header */
+}
+
+/* Container for logo and navigation */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Logo */
+.logo img {
+  width: 100px;
+  height: auto;
+  filter: invert(1);
+
+  transition: transform 1s ease-in-out, filter 1s ease-in;
+  transform: scale(1);
+}
+.logo:hover {
+  transform: scale(1.05); /* Scale the logo on hover */
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 20px; /* Adds space between links */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #3498db; /* Change color on hover */
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  
+  width: 100vw;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.intro-text {
+  position: absolute;
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 20vh; /* Utiliser toute la hauteur de la fenêtre */
+  text-align: center;
+  width: 100%;
+  color: white;
+  mix-blend-mode: exclusion;
+
+  transition: color 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.scroll-arrow-container {
+  position: absolute;
+  bottom: 50px;  /* Adjust this value to position the arrow above the scroll-guide element */
+  left: 50%;
+  
+  z-index: 2;
+  width: 30px;  /* Arrow width */
+  height: 30px;  /* Arrow height */
+}
+
+/* Arrow styling */
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid white;  /* Left border of the triangle */
+  border-bottom: 3px solid white;  /* Bottom border of the triangle */
+  transform: rotate(45deg);  /* Rotate to make the arrow */
+  animation: bounce 1.5s infinite; /* Add bounce animation */
+}
+
+/* Keyframes for the bounce animation */
+@keyframes bounce {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-45deg);  /* Move the arrow upwards */
+  }
+  100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+}
+
+
+
+.typewriter {
+  display: flex;
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  flex-direction: column; /* Stack elements vertically */
+  position: relative;
+  font-size: 75px;
+}
+
+.typewriter p {
+  font-size: 25px;
+  margin-top: 25px;
+}
+.typewriter span {
+  position: relative; /* Use Flexbox */
+  display: inline-block;
+}
+
+.typewriter span::before {
+  content: "David";
+  color: white;
+  animation: words 20s infinite;
+}
+
+.typewriter span::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  border-left: 2px solid white;
+  right: -8px;
+  animation: cursor 0.75s step-end infinite, typing 20s steps(8) infinite;
+  color: white;
+}
+
+.background-typewriter {
+  position: absolute;
+  top: auto; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -40%
+  ); /* Offset the element by its own width/height to perfectly center it */
+  width: auto; /* Allow width to adjust automatically */
+  color: rgba(255, 255, 255, 0); /* Color with transparency */
+  font-size: 150px;
+  font-style: italic;
+  z-index: 2;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  align-items: center;
+}
+
+/* The typing effect */
+@keyframes words {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    width: 0;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes cursor {
+  50% {
+    border-color: transparent; /* Make the cursor invisible */
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95% {
+    width: 0;
+  }
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85% {
+    width: calc(100% + 8px);
+  }
+}
+
